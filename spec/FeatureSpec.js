@@ -9,11 +9,10 @@ describe('Feature Test:', function(){
         plane = new Plane();
     });
 
-    describe('planes can', function() {
+    describe('planes will be instructed to land', function() {
         it('land', function() {
-            plane = new Plane();
-            plane.land;
-            expect(airport.hangar).toContain(plane);
+            plane.land(airport);
+            expect(airport.hangar()).toContain(plane);
 
         });
     });

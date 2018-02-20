@@ -5,7 +5,6 @@ describe('Airport:', function() {
   var plane;
   beforeEach(function() {
     airport = new Airport();
-    plane = new Plane();
   });
 
   // describe('landing planes:', function() {
@@ -15,6 +14,6 @@ describe('Airport:', function() {
   // });
 
   it('has no planes by default', function() {
-    expect(airport.hangar().toEqual([]));
+    expect(airport.hangar()).toEqual([]);
   });
 });
