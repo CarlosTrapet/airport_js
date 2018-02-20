@@ -8,9 +8,3 @@ function Airport() {
 Airport.prototype.land = function(plane) {
   this.hangar.push(plane);
 };
-
-
-
-
-
-Error: Expected undefined to be defined.

@@ -11,8 +11,9 @@ describe('Feature Test:', function(){
 
     describe('planes can', function() {
         it('land', function() {
-            airport.land(plane);
-            expect(airport.hangar()).toContain(plane);
+            plane = new Plane();
+            plane.land;
+            expect(airport.hangar).toContain(plane);
 
         });
     });
