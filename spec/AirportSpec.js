@@ -3,6 +3,7 @@
 describe('Airport:', function() {
   var airport;
   var plane;
+
   beforeEach(function() {
     airport = new Airport();
     plane = new Plane();
@@ -19,9 +20,11 @@ describe('Airport:', function() {
     });
   });
 
-
   describe('landing planes:', function() {
-    it('does not return undefined', function() {
+    it('adds plane to hangar', function() {
+      var weather = new Weather();
+      spyOn(Math, 'random').and.returnValue(0.1);
+      console.log(weather.isStormy())
       airport.land(plane);
       expect(airport.hangar()).toContain(plane);
     });
@@ -31,6 +34,8 @@ describe('Airport:', function() {
     });
 
     it('prevents landing planes when full', function() {
+      var weather = new Weather();
+      spyOn(Math, 'random').and.returnValue(0.1);
       for(var i = 0; i < 20; i++){
         airport.land(new Plane());
       };
@@ -39,7 +44,7 @@ describe('Airport:', function() {
 
     it('does not land when weather is stormy', function() {
       var weather = new Weather();
-      spyOn(weather, 'isStormy').and.returnValue(true);      
+      spyOn(Math, 'random').and.returnValue(0.9);
       expect(function() { airport.land(plane) }).toThrow("Weather too stormy to land")
     });
 
@@ -52,9 +57,19 @@ describe('Airport:', function() {
 
   describe('taking off a plane', function() {
     it("takes off a plane", function () {
+      var weather = new Weather();
+      spyOn(Math, 'random').and.returnValue(0.1);
       airport.land(plane);
       airport.takeOff(plane);
       expect(airport.hangar()).not.toContain(plane);
+    });
+
+    it("prevents take off when weather is stormy", function() {
+      var weather = new Weather();
+      // spyOn(Math, 'random').and.returnValue(0.1);
+      airport._hangar.push(plane);
+      spyOn(Math, 'random').and.returnValue(0.9);
+      expect(function() { airport.takeOff(plane) }).toThrow("Weather too stormy to take off")
     });
   });
 

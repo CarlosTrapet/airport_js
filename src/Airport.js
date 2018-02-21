@@ -38,6 +38,9 @@ Airport.prototype = {
   },
 
   takeOff: function(plane) {
+    if (this._weather.isStormy()) {
+      throw "Weather too stormy to take off";
+    };
     this._hangar.pop(plane);
   },
 

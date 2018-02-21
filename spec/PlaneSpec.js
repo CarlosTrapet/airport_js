@@ -9,6 +9,8 @@ describe('Plane', function() {
     airport = new Airport();
         // airport = jasmine.createSpyObj('airport',['clearForLanding']);
       });
+
+
+
+
 });
-
-
