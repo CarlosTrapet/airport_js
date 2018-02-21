@@ -37,6 +37,13 @@ describe('Airport:', function() {
         expect(function() {airport.land(plane)}).toThrow('Capacity full')
     });
 
+    it('does not land when weather is stormy', function() {
+      var weather = jasmine.createSpy('stormy weather');
+      // weather.isStormy.returnValue(true);
+      console.log(weather.isStormy().returnValue(true));
+      expect(function() { airport.land(plane) }).toThrow("Weather too stormy to land")
+    });
+
     // it("plane status changes", function () {
     //   airport.land(plane);
     //   expect(plane.setStatus()).toEqual("Landed")
