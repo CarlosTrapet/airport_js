@@ -38,9 +38,8 @@ describe('Airport:', function() {
     });
 
     it('does not land when weather is stormy', function() {
-      var weather = jasmine.createSpy('stormy weather');
-      // weather.isStormy.returnValue(true);
-      console.log(weather.isStormy().returnValue(true));
+      var weather = new Weather();
+      spyOn(weather, 'isStormy').and.returnValue(true);      
       expect(function() { airport.land(plane) }).toThrow("Weather too stormy to land")
     });
 

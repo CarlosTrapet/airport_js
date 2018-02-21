@@ -2,10 +2,11 @@
 'use strict';
 
 
-function Airport(){
+function Airport(weather){
   this._hangar = []
   this._capacity = 20;
-}
+  this._weather = typeof weather !== 'undefined' ? weather : new Weather();
+};
 
 Airport.prototype = {
 
@@ -28,6 +29,9 @@ Airport.prototype = {
   land: function(plane) {
     if (this.isFull()) {
       throw "Capacity full";
+    };
+    if (this._weather.isStormy()) {
+      throw "Weather too stormy to land";
     };
     this._hangar.push(plane);
     // plane.setStatus = "Landed";
