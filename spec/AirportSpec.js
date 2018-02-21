@@ -12,6 +12,11 @@ describe('Airport:', function() {
     it("has a default capacity", function(){
       expect(airport.capacity()).toEqual(20);
     });
+
+    it("can be changed", function() {
+      airport.setCapacity(50);
+      expect(airport.capacity()).toEqual(50);
+    });
   });
 
 
@@ -23,6 +28,13 @@ describe('Airport:', function() {
 
     it('has no planes by default', function() {
       expect(airport.hangar()).toEqual([]);
+    });
+
+    it('prevents landing planes when full', function() {
+      for(var i = 0; i < 20; i++){
+        airport.land(new Plane());
+      };
+        expect(function() {airport.land(plane)}).toThrow('Capacity full')
     });
 
     // it("plane status changes", function () {
